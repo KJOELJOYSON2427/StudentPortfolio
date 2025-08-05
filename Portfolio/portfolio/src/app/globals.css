@@ -7,3 +7,20 @@ body {
   padding: 0;
   height: 100%;
 }
+
+@layer utilities {
+  .clip-left {
+    clip-path: polygon(0 0, 85% 0, 60% 100%, 0% 100%);
+  }
+
+  .clip-right {
+    clip-path: polygon(60% 0, 100% 0, 100% 100%, 35% 100%);
+  }
+
+  @media (max-width: 768px) {
+    .clip-left,
+    .clip-right {
+      clip-path: none;
+    }
+  }
+}
