@@ -1,6 +1,6 @@
 import LeftPanel from "@/components/leftPanel";
 import RightPanel from "@/components/rightPanel";
-import Header from "./common/header";
+
 
 export default function HomePage() {
   return (
@@ -14,7 +14,7 @@ export default function HomePage() {
             <LeftPanel />
           </div>
         </div>
-        <div className="bg-black text-white h-1/2 overflow-hidden">
+        <div className="bg-gray-100 text-white h-1/2 overflow-hidden">
           <div className="p-4 h-full flex flex-col justify-center">
             <RightPanel />
           </div>
