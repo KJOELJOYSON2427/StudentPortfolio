@@ -1,0 +1,83 @@
+"use client";
+
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Sparkles, Briefcase, GraduationCap } from "lucide-react"; // nice icons
+import { JSX } from "react/jsx-runtime";
+
+type TabType = "skills" | "experience" | "education";
+
+const tabData: { key: TabType; label: string; icon: JSX.Element; content: JSX.Element }[] = [
+  {
+    key: "skills",
+    label: "Skills",
+    icon: <Sparkles className="w-5 h-5 mr-2" />,
+    content: <p className="text-lg font-medium text-gray-200">⚡ List your <span className="text-blue-400">Skills</span> here</p>,
+  },
+  {
+    key: "experience",
+    label: "Experience",
+    icon: <Briefcase className="w-5 h-5 mr-2" />,
+    content: <p className="text-lg font-medium text-gray-200">💼 Your <span className="text-pink-400">Experience</span> details</p>,
+  },
+  {
+    key: "education",
+    label: "Education",
+    icon: <GraduationCap className="w-5 h-5 mr-2" />,
+    content: <p className="text-lg font-medium text-gray-200">🎓 Your <span className="text-green-400">Education</span> details</p>,
+  },
+];
+
+const Tabs = () => {
+  const [activeTab, setActiveTab] = useState<TabType>("skills");
+
+  return (
+    <div className="w-full max-w-3xl mx-auto mt-16">
+      {/* Glassmorphism container */}
+      <div className="backdrop-blur-lg bg-white/10 border border-white/20 rounded-2xl shadow-xl p-6">
+        
+        {/* Tab Buttons */}
+        <div className="flex flex-col sm:flex-row justify-center gap-4 border-b border-white/20 pb-4">
+          {tabData.map((tab) => (
+            <button
+              key={tab.key}
+              className={`flex items-center px-6 py-2 rounded-xl text-sm sm:text-base font-medium transition-all duration-300 
+                ${
+                  activeTab === tab.key
+                    ? "bg-gradient-to-r from-blue-500/70 to-purple-500/70 text-white shadow-lg scale-105"
+                    : "text-gray-300 hover:text-white hover:bg-white/10"
+                }`}
+              onClick={() => setActiveTab(tab.key)}
+            >
+              {tab.icon}
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Tab Content with animation */}
+        <div className="mt-6 p-6 min-h-[140px] flex items-center justify-center">
+          <AnimatePresence mode="wait">
+            {tabData.map(
+              (tab) =>
+                activeTab === tab.key && (
+                  <motion.div
+                    key={tab.key}
+                    initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -20, scale: 0.95 }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
+                    className="text-center"
+                  >
+                    {tab.content}
+                  </motion.div>
+                )
+            )}
+          </AnimatePresence>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Tabs;

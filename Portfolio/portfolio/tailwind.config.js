@@ -7,7 +7,11 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+     backgroundImage: {
+        'radial-gray': 'radial-gradient(circle at center, #f9fafb, #d1d5db)',
+      },
+    },
   },
   plugins: [],
 }

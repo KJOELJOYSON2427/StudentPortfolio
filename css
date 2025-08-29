@@ -1,0 +1,45 @@
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.skillCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-radius: 1rem;
+  color: white;
+  font-weight: 500;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.skillCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.icon {
+  margin-bottom: 0.5rem;
+}
+
+/* Distinct gradients */
+.gradientBlue {
+  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+}
+
+.gradientGreen {
+  background: linear-gradient(135deg, #10b981, #22c55e);
+}
+
+.gradientPurple {
+  background: linear-gradient(135deg, #8b5cf6, #d946ef);
+}
+
+.gradientOrange {
+  background: linear-gradient(135deg, #f97316, #f59e0b);
+}

@@ -16,19 +16,27 @@ const RightPanel = () => {
   }, []);
 
   return (
-    <div className="relative z-10 h-full w-full flex flex-col justify-center items-center px-4 md:px-8 py-8 mt-[-80px] md:mt-0">
+    <div className="relative md:ml-100 z-80 h-full w-full flex flex-col justify-center items-center px-4 md:px-8 py-8 mt-[-60px] md:mt-0">
       <div
-        key={images[currentImage].images} // re-render on image change
-        className="w-[150px] h-[150px] md:w-[320px] md:h-[320px]
-        bg-white md:bg-transparent relative
-        rounded-full border-4 border-gray-300 shadow-md
-        animate-fadeSlide transition-all duration-700 ease-in-out"
+        key={images[currentImage].images}
+        className="
+          relative 
+          w-[200px] h-[200px] 
+          md:w-[350px] md:h-[350px] 
+          rounded-full 
+          border-4 border-gray-300 shadow-xl
+          bg-white md:bg-transparent
+          z-30
+          animate-fadeSlide 
+          transition-all duration-700 ease-in-out
+        "
       >
         <Image
           src={images[currentImage].images}
           alt={images[currentImage].alt}
           fill
-          className="object-cover rounded-full"
+          className="object-cover rounded-full z-40"
+          priority
         />
       </div>
     </div>
