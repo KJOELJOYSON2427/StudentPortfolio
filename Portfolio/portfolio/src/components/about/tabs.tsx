@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, Briefcase, GraduationCap } from "lucide-react"; // nice icons
 import { JSX } from "react/jsx-runtime";
-
+import Skills from "./Skills/skills";
 type TabType = "skills" | "experience" | "education";
 
 const tabData: { key: TabType; label: string; icon: JSX.Element; content: JSX.Element }[] = [
@@ -12,7 +12,11 @@ const tabData: { key: TabType; label: string; icon: JSX.Element; content: JSX.El
     key: "skills",
     label: "Skills",
     icon: <Sparkles className="w-5 h-5 mr-2" />,
-    content: <p className="text-lg font-medium text-gray-200">⚡ List your <span className="text-blue-400">Skills</span> here</p>,
+    content: (
+      <div className="w-full">
+      <Skills />
+    </div>
+    ),
   },
   {
     key: "experience",
@@ -56,7 +60,7 @@ const Tabs = () => {
         </div>
 
         {/* Tab Content with animation */}
-        <div className="mt-6 p-6 min-h-[140px] flex items-center justify-center">
+        <div className="mt-6 p-6 min-h-[140px] ">
           <AnimatePresence mode="wait">
             {tabData.map(
               (tab) =>
@@ -67,9 +71,11 @@ const Tabs = () => {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -20, scale: 0.95 }}
                     transition={{ duration: 0.4, ease: "easeOut" }}
-                    className="text-center"
+                    className="w-full stroke-black"
                   >
-                    {tab.content}
+                     <div className="w-full h-full">
+              {tab.content}
+            </div>
                   </motion.div>
                 )
             )}
