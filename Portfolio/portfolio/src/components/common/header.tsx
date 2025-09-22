@@ -5,36 +5,15 @@ import { getMenuItems } from '@/logic/MenuItem';
 import { Menu, X, Moon, Sun } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import SocialIcons from "../SocialIcons";
+import { useTheme } from '@/context/ThemeProvider.Context';
 
 const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
   const pathname = usePathname();
   const menuItems = getMenuItems();
 
-  // Sync dark mode with localStorage and document
-  useEffect(() => {
-    const storedTheme = localStorage.getItem("theme");
-    if (storedTheme === "dark") {
-      setIsDarkMode(true);
-      document.documentElement.classList.add("dark");
-    } else {
-      setIsDarkMode(false);
-      document.documentElement.classList.remove("dark");
-    }
-  }, []);
-
-  const toggleTheme = () => {
-    const newMode = !isDarkMode;
-    setIsDarkMode(newMode);
-    localStorage.setItem("theme", newMode ? "dark" : "light");
-
-    if (newMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  };
+  // ✅ useTheme hook gives you the shared state
+  const { isDarkMode, toggleTheme } = useTheme();
 
   return (
     <>
@@ -71,14 +50,14 @@ const Header: React.FC = () => {
           <div className="flex items-center gap-4">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full md:hidden hover:bg-white/20 transition"
+              className="p-2 rounded-full hover:bg-white/20 transition"
               title="Toggle Theme"
             >
               {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
             </button>
             <button
               className="md:hidden relative z-50"
-              onClick={() => setIsMobileMenuOpen(prev => !prev)}
+              onClick={() => setIsMobileMenuOpen((prev) => !prev)}
             >
               {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
