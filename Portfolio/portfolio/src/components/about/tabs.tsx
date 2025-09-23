@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, Briefcase, GraduationCap } from "lucide-react"; // nice icons
 import { JSX } from "react/jsx-runtime";
 import Skills from "./Skills/skills";
+import { useTheme } from "@/context/ThemeProvider.Context";
 type TabType = "skills" | "experience" | "education";
 
 const tabData: { key: TabType; label: string; icon: JSX.Element; content: JSX.Element }[] = [
@@ -34,11 +35,13 @@ const tabData: { key: TabType; label: string; icon: JSX.Element; content: JSX.El
 
 const Tabs = () => {
   const [activeTab, setActiveTab] = useState<TabType>("skills");
-
+  const { isDarkMode } = useTheme();
   return (
     <div className="w-full max-w-3xl mx-auto mt-16">
       {/* Glassmorphism container */}
-      <div className="backdrop-blur-lg bg-white/10 border border-white/20 rounded-2xl shadow-xl p-6">
+      <div className={`backdrop-blur-lg border   rounded-2xl shadow-xl p-6
+         ${isDarkMode ?'bg-gray-800 border-gray-700 text-gray-200':'bg-white/10  border-white/20 text-gray-900'}
+        `}>
         
         {/* Tab Buttons */}
         <div className="flex flex-col sm:flex-row justify-center gap-4 border-b border-white/20 pb-4">

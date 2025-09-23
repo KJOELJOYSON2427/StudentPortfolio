@@ -2,10 +2,17 @@
 
 import React from "react";
 import "./details.css";
+import { useTheme } from "@/context/ThemeProvider.Context";
 
 const Bio = () => {
+  const { isDarkMode } = useTheme();
+
   return (
-    <div className="bio-container">
+    <div
+      className={`bio-container ${
+        isDarkMode ? "bg-gray-900 text-gray-100" : "bg-white text-gray-900"
+      }`}
+    >
       {/* Heading */}
       <div className="bio-header">
         <h2 className="bio-title">K Joel Joyson</h2>

@@ -14,6 +14,7 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import Image from "next/image";
 import { techIcons } from "../../../logic/techIcons";
+import { useTheme } from "@/context/ThemeProvider.Context";
 
 type SkillDialogProps = {
   open: boolean;
@@ -28,8 +29,9 @@ export default function SkillDialog({
   label,
   details,
 }: SkillDialogProps) {
+  const { isDarkMode } = useTheme();
   return (
-    <Dialog open={open} onClose={onClose} fullWidth maxWidth="md">
+    <Dialog open={open} onClose={onClose} fullWidth maxWidth="md" className={isDarkMode ? "dark-dialog" : ""}>
       <DialogTitle sx={{ fontWeight: "bold", fontSize: "1.5rem" }}>
         {label} Technologies
         <IconButton
