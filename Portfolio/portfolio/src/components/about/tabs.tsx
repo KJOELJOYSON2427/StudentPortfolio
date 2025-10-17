@@ -7,6 +7,7 @@ import { JSX } from "react/jsx-runtime";
 import Skills from "./Skills/skills";
 import { useTheme } from "@/context/ThemeProvider.Context";
 import Experience from "./Experience/Experience";
+import Education from "./Education/Education";
 type TabType = "skills" | "experience" | "education";
 
 const tabData: { key: TabType; label: string; icon: JSX.Element; content: JSX.Element }[] = [
@@ -32,7 +33,7 @@ const tabData: { key: TabType; label: string; icon: JSX.Element; content: JSX.El
     key: "education",
     label: "Education",
     icon: <GraduationCap className="w-5 h-5 mr-2" />,
-    content: <p className="text-lg font-medium text-gray-200">🎓 Your <span className="text-green-400">Education</span> details</p>,
+    content: (<Education/>),
   },
 ];
 
