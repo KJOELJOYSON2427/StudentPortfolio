@@ -67,7 +67,7 @@ const Tabs = () => {
         </div>
 
         {/* Tab Content with animation */}
-        <div className="mt-6 p-6 min-h-[140px] ">
+        <div className="mt-6 p-0 sm:p-4 min-h-[400px] sm:min-h-[500px] transition-all duration-300">
           <AnimatePresence mode="wait">
             {tabData.map(
               (tab) =>
