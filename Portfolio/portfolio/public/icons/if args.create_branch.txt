@@ -1,0 +1,11 @@
+if args.create_branch:
+        print(f"Creating branch {args.name}")
+    elif args.delete_branch:
+        print(f"Deleting branch {args.name}")
+    elif args.list_branch:
+        print("Listing all branches")
+    else:
+        print("No action provided. Use -b, -d, or -l.")
+
+
+
